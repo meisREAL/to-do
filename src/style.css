@@ -167,3 +167,73 @@ body {
     margin-left: auto;
     margin-right: 50px;
 }
+
+#createProject {
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 25px;
+}
+
+#createProject:hover {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: tomato;
+    opacity: 0.8;
+    margin-right: 20px;
+}
+
+#newProjectWindow {
+    width: 200px;
+    height: 100px;
+}
+
+#newProjectInput {
+    width: 15vw;
+    height: 5vh;
+    margin-left: 2vw;
+    font-size: 4vh;
+}
+
+#newProjectButtonPlace {
+    display: flex;
+    gap: 1vw;
+    margin-top: 15px;
+}
+
+#newProjectCreateButton {
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 8vw;
+    height: 3vh;
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: lightgreen;
+}
+
+#newProjectCreateButton:hover {
+    background-color: greenyellow;
+    font-weight: 900;
+    border: 3px solid black;
+}
+
+#cancelNewProject {
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 8vw;
+    height: 3vh;
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: lightpink;
+}
+
+#cancelNewProject:hover {
+    background-color: pink;
+    font-weight: 900;
+    border: 3px solid black;
+}
