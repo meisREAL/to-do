@@ -1,7 +1,7 @@
 # to-do
 Simple to do list
 
-[]Body DOM
+[X]Body DOM
 []to-do list DOM
 []Projects DOM
 
