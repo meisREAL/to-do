@@ -1,9 +1,13 @@
+import { pushToDo, theToDos, toDoTask } from "./toDo";
 
-const showToDo = (title, description, priority) => {
+
+
+
+const displayToDO = () => {
+    //displays to do on page
     const mainArea = document.getElementById('toDoSide');
+    for (let i = 0; i < theToDos.length; i++) {
 
-    const displayToDO = () => {
-        //displays to do on page
     }
 }
 
@@ -56,6 +60,21 @@ const popUpWindow = function () {
     const createBtn = document.createElement('div');
     createBtn.setAttribute('id', 'createToDo');
     createBtn.textContent = 'Create new';
+
+    createBtn.onclick = function () {
+        let taskPriority;
+        if (lowRadio.checked) {
+            taskPriority = 'Low';
+        } else if (mediumRadio.checked) {
+            taskPriority = 'Medium';
+        } else if (highRadio.checked) {
+            taskPriority = 'High';
+        }
+        const task = toDoTask(title.value, description.value, taskPriority)
+        pushToDo(task);
+
+        popUp.remove(popUp);
+    }
     btnPlace.appendChild(createBtn);
     const cancelBtn = document.createElement('div');
     cancelBtn.setAttribute('id', 'cancelToDo');
