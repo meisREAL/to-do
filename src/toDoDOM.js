@@ -6,8 +6,31 @@ import { pushToDo, theToDos, toDoTask } from "./toDo";
 const displayToDO = () => {
     //displays to do on page
     const mainArea = document.getElementById('toDoSide');
-    for (let i = 0; i < theToDos.length; i++) {
 
+    while (mainArea.firstChild) {
+        mainArea.removeChild(mainArea.firstChild);
+    }
+
+    for (let i = 0; i < theToDos.length; i++) {
+        const toDoTask = document.createElement('div');
+        toDoTask.classList.add('toDoTask');
+        toDoTask.setAttribute('data-index-number', i)
+        const doneCheck = document.createElement('input');
+        doneCheck.setAttribute('type', 'radio');
+        doneCheck.classList.add('doneToDo');
+        toDoTask.appendChild(doneCheck);
+
+        const title = document.createElement('div');
+        title.classList.add('toDoTaskTitle');
+        title.textContent = theToDos[i].title;
+        toDoTask.appendChild(title);
+
+        const priority = document.createElement('div');
+        priority.classList.add('toDoTaskPriority');
+        priority.textContent = theToDos[i].priority;
+        toDoTask.appendChild(priority);
+
+        mainArea.appendChild(toDoTask);
     }
 }
 
@@ -72,7 +95,7 @@ const popUpWindow = function () {
         }
         const task = toDoTask(title.value, description.value, taskPriority)
         pushToDo(task);
-
+        displayToDO();
         popUp.remove(popUp);
     }
     btnPlace.appendChild(createBtn);
@@ -92,4 +115,5 @@ const popUpWindow = function () {
 
 export {
     popUpWindow,
+    displayToDO
 }

@@ -140,3 +140,30 @@ body {
 #cancelToDo:hover {
     background-color: tomato;
 }
+
+.toDoTask {
+    display: flex;
+    border-bottom: 1px solid gray;
+    height: 8vh;
+    gap: 10px;
+}
+
+.doneToDo {
+    height: 2em;
+    width: 2em;
+    align-self: center;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.toDoTaskTitle {
+    font-size: 30px;
+    align-self: center;
+}
+
+.toDoTaskPriority {
+    font-size: 30px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: 50px;
+}

@@ -8,6 +8,9 @@ const pushToDo = (task) => {
     theToDos.push(task);
 }
 
+const test = toDoTask('Buy milk', 'need some stuff', 'High');
+pushToDo(test);
+
 export {
     theToDos,
     toDoTask,
