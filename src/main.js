@@ -1,3 +1,4 @@
+import { mainBody } from './bodyDOM';
 import './style.css';
 
-console.log('works');
+mainBody.makeStuff();
