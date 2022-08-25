@@ -15,9 +15,7 @@ const createProjects = (name) => {
         listItem.appendChild(projectTitle);
         mainList.appendChild(listItem);
     }
-    const addProjects = () => {
-        //button for creating new projects
-    }
+
     return {
         mainProject,
     }

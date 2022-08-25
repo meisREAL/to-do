@@ -1,10 +1,12 @@
 import { mainBody } from './bodyDOM';
 import { createProjects } from './projectsDOM';
-import { createButton } from './toDoDOM';
+import { popUpWindow } from './toDoDOM';
 import './style.css';
 
 mainBody.makeStuff();
-// mainBody.makeBtn();
+const toDoBtn = document.getElementById('newToDo');
+toDoBtn.addEventListener('click', popUpWindow)
+
 
 const today = createProjects('Today');
 const work = createProjects('Work');
