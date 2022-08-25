@@ -18,6 +18,7 @@ const displayToDO = () => {
         const doneCheck = document.createElement('input');
         doneCheck.setAttribute('type', 'radio');
         doneCheck.classList.add('doneToDo');
+        doneCheck.setAttribute('data-index-number', i)
         toDoTask.appendChild(doneCheck);
 
         const title = document.createElement('div');
@@ -31,6 +32,19 @@ const displayToDO = () => {
         toDoTask.appendChild(priority);
 
         mainArea.appendChild(toDoTask);
+    }
+    completeToDo();
+}
+
+const completeToDo = () => {
+    const radioCheck = document.querySelectorAll('.doneToDo');
+    for (let i = 0; i < radioCheck.length; i++) {
+        radioCheck[i].addEventListener('click', function (e) {
+            setTimeout(function () {
+                theToDos.splice(e.target.dataset.indexNumber, 1);
+                displayToDO();
+            }, 300);
+        })
     }
 }
 
