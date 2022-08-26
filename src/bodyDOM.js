@@ -11,6 +11,7 @@ const mainBody = (function () {
 
     const headerTitle = () => {
         const title = document.createElement('h1');
+        title.setAttribute('id', 'h1')
         title.textContent = 'my To-do List';
         header.appendChild(title);
     }

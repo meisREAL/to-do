@@ -1,4 +1,5 @@
-
+import { pushProject, theToDos, toDoTask } from "./toDo";
+import { displayToDO } from "./toDoDOM";
 
 const createProjects = (name) => {
     const mainArea = document.getElementById('projectSide');
@@ -6,17 +7,7 @@ const createProjects = (name) => {
     mainList.setAttribute('id', 'mainProjectList');
     mainArea.appendChild(mainList);
 
-    const mainProject = () => {
-        const projectTitle = document.createElement('ul');
-        projectTitle.classList.add('projectTitle');
-        projectTitle.textContent = name;
-        const listItem = document.createElement('li');
-
-        listItem.appendChild(projectTitle);
-        mainList.appendChild(listItem);
-    }
-
-    const projectBtn = () => {
+    const projectBtn = () => { //+Add Project button
         const createProject = document.createElement('div');
         createProject.setAttribute('id', 'createProject')
         createProject.textContent = '+ Add Project';
@@ -25,15 +16,10 @@ const createProjects = (name) => {
             makeProject();
         }
 
-        // mainList.appendChild(createProject);
-
-        const listItem = document.createElement('li');
-
-        listItem.appendChild(createProject);
-        mainList.appendChild(listItem);
+        mainArea.appendChild(createProject);
     }
 
-    const makeProject = () => {
+    const makeProject = () => { //pop up window to add a new project
         const projectWindow = document.createElement('li');
         projectWindow.setAttribute('id', 'newProjectWindow');
         const input = document.createElement('input');
@@ -64,20 +50,41 @@ const createProjects = (name) => {
         mainList.appendChild(projectWindow)
     }
 
-    const addProjectToList = () => {
+    const addProjectToList = () => { //this creates projects from array to display in project side window
         const input = document.getElementById('newProjectInput');
 
-        const projectTitle = document.createElement('ul');
-        projectTitle.classList.add('projectTitle');
-        projectTitle.textContent = input.value;
-        const listItem = document.createElement('li');
+        if (input != null) {
+            pushProject([input.value]);
+        }
+        console.log(theToDos)
+        while (mainList.firstChild) {
+            mainList.removeChild(mainList.firstChild);
+        }
+        for (let i = 0; i < theToDos.length; i++) {
+            const projectTitle = document.createElement('ul');
+            projectTitle.classList.add('projectTitle');
+            projectTitle.setAttribute('data-index-number', i)
+            projectTitle.textContent = theToDos[i][0];
+            projectTitle.onclick = () => {
+                chooseProject(projectTitle);
+                displayToDO()
+            }
+            const listItem = document.createElement('li');
 
-        listItem.appendChild(projectTitle);
-        mainList.appendChild(listItem);
+            listItem.appendChild(projectTitle);
+            mainList.appendChild(listItem);
+        }
+    }
+
+    const chooseProject = (e) => {//cheating so I could get number for arrays
+        const titlePlace = document.getElementById('h1');
+        titlePlace.textContent = e.textContent;
+        const dataNumber = e.dataset.indexNumber;
+        titlePlace.setAttribute('data-index-number', dataNumber);
     }
 
     return {
-        mainProject,
+        addProjectToList,
         projectBtn,
     }
 };

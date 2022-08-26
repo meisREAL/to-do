@@ -1,17 +1,18 @@
-import { pushToDo, theToDos, toDoTask } from "./toDo";
+import { pushProject, theToDos, toDoTask, pushToDo } from "./toDo";
 
 
 
 
-const displayToDO = () => {
-    //displays to do on page
+const displayToDO = (e) => {//displays to do task on todo window
     const mainArea = document.getElementById('toDoSide');
+    const projectNumber = document.getElementById('h1').dataset.indexNumber;
+
 
     while (mainArea.firstChild) {
         mainArea.removeChild(mainArea.firstChild);
     }
 
-    for (let i = 0; i < theToDos.length; i++) {
+    for (let i = 0; i < theToDos[projectNumber].length; i++) {
         const toDoTask = document.createElement('div');
         toDoTask.classList.add('toDoTask');
         toDoTask.setAttribute('data-index-number', i)
@@ -30,34 +31,36 @@ const displayToDO = () => {
 
         const title = document.createElement('div');
         title.classList.add('toDoTaskTitle');
-        title.textContent = theToDos[i].title;
+        title.textContent = theToDos[projectNumber][i].title;
         toDoTask.appendChild(title);
 
         const priority = document.createElement('div');
         priority.classList.add('toDoTaskPriority');
-        priority.textContent = theToDos[i].priority;
+        priority.textContent = theToDos[projectNumber][i].priority;
         toDoTask.appendChild(priority);
 
         mainArea.appendChild(toDoTask);
     }
+    mainArea.removeChild(mainArea.firstChild);
     completeToDo();
 }
 
-const completeToDo = () => {
+const completeToDo = () => {//adds event listeners on todo's radio buttons
     const radioCheck = document.querySelectorAll('.doneToDo');
+    const projectNumber = document.getElementById('h1').dataset.indexNumber;
     for (let i = 0; i < radioCheck.length; i++) {
         radioCheck[i].addEventListener('click', function (e) {
             setTimeout(function () {
-                theToDos.splice(e.target.dataset.indexNumber, 1);
+                theToDos[projectNumber].splice(e.target.dataset.indexNumber, 1);
                 displayToDO();
             }, 300);
         })
     }
 }
 
-const popUpWindow = function () {
-    //pop up window to list info for to do
+const popUpWindow = function () {//pop up window to list info for to do (to create a to do)
     const mainArea = document.getElementById('toDoSide');
+    const projectNumber = document.getElementById('h1').dataset.indexNumber;
 
     const popUp = document.createElement('div');
     popUp.setAttribute('id', 'popUpToDo');
@@ -115,7 +118,8 @@ const popUpWindow = function () {
             taskPriority = 'High';
         }
         const task = toDoTask(title.value, description.value, taskPriority)
-        pushToDo(task);
+        pushToDo(projectNumber, task);
+        console.log(theToDos);
         displayToDO();
         popUp.remove(popUp);
     }
@@ -132,25 +136,26 @@ const popUpWindow = function () {
     mainArea.appendChild(popUp);
 };
 
-const previewToDo = (e) => {
+const previewToDo = (e) => {//creates pop up window to view to do task in detail
     const mainWindow = document.getElementById('toDoSide');
     const previewWindow = document.createElement('div');
     const toDoNumber = e.target.dataset.indexNumber;
+    const projectNumber = document.getElementById('h1').dataset.indexNumber;
     previewWindow.setAttribute('id', 'previewToDoWindow')
 
     const title = document.createElement('div');
     title.setAttribute('id', 'previewToDoTitle');
-    title.textContent = theToDos[toDoNumber].title;
+    title.textContent = theToDos[projectNumber][toDoNumber].title;
     previewWindow.appendChild(title);
 
     const description = document.createElement('div');
     description.setAttribute('id', 'previewToDoDescription');
-    description.textContent = theToDos[toDoNumber].description;
+    description.textContent = theToDos[projectNumber][toDoNumber].description;
     previewWindow.appendChild(description);
 
     const priority = document.createElement('div');
     priority.setAttribute('id', 'previewToDoPriority');
-    priority.textContent = theToDos[toDoNumber].priority;
+    priority.textContent = theToDos[projectNumber][toDoNumber].priority;
     previewWindow.appendChild(priority);
 
     const closeButton = document.createElement('div');
