@@ -110,7 +110,7 @@ const popUpWindow = function () {//pop up window to list info for to do (to crea
 
     createBtn.onclick = function () {
         if (title.value.length <= 0) {
-            window.confirm('To do?');
+            window.confirm('Please create a title for your to do');
             return;
         }
         console.log(title.value);
