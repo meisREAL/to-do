@@ -87,7 +87,7 @@ body {
 }
 
 #inputTitle {
-    width: 25vw;
+    width: 450px;
     height: 5vh;
     font-size: 30px;
     align-self: center;
@@ -169,19 +169,20 @@ body {
 }
 
 #createProject {
+    margin-top: 15px;
     font-size: 20px;
     font-weight: 900;
     margin-left: 25px;
 }
 
 #createProject:hover {
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 10px;
-    padding: 10px;
-    padding-left: 30px;
-    background-color: tomato;
-    opacity: 0.8;
-    margin-right: 20px;
+    padding: 5px;
+    /* padding-left: 30px; */
+    /* background-color: tomato; */
+    /* opacity: 0.8; */
+    /* margin-right: 20px; */
 }
 
 #newProjectWindow {
@@ -236,4 +237,69 @@ body {
     background-color: pink;
     font-weight: 900;
     border: 3px solid black;
+}
+
+.viewToDo {
+    font-size: 25px;
+    align-self: center;
+    padding: 5px;
+    border-radius: 10px;
+    color: lightgray;
+}
+
+.viewToDo:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+#previewToDoWindow {
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    width: 400px;
+    height: 400px;
+    background-color: tomato;
+    opacity: 0.7;
+    border-radius: 15px;
+}
+
+#previewToDoTitle {
+    font-size: 30px;
+    font-weight: 700;
+    align-self: center;
+    text-align: center;
+}
+
+#previewToDoDescription {
+    font-size: 25px;
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    align-self: center;
+    margin-left: 25px;
+    margin-top: 15px;
+}
+
+#previewToDoPriority {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+#closePreviewToDo {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 30px;
+    width: 60px;
+    align-self: center;
+    text-align: center;
+    margin-left: 170px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+#closePreviewToDo:hover {
+    background-color: lightgreen;
 }

@@ -21,6 +21,13 @@ const displayToDO = () => {
         doneCheck.setAttribute('data-index-number', i)
         toDoTask.appendChild(doneCheck);
 
+        const viewToDo = document.createElement('div');
+        viewToDo.classList.add('viewToDo');
+        viewToDo.textContent = 'View';
+        viewToDo.setAttribute('data-index-number', i);
+        viewToDo.onclick = previewToDo;
+        toDoTask.appendChild(viewToDo);
+
         const title = document.createElement('div');
         title.classList.add('toDoTaskTitle');
         title.textContent = theToDos[i].title;
@@ -124,6 +131,38 @@ const popUpWindow = function () {
 
     mainArea.appendChild(popUp);
 };
+
+const previewToDo = (e) => {
+    const mainWindow = document.getElementById('toDoSide');
+    const previewWindow = document.createElement('div');
+    const toDoNumber = e.target.dataset.indexNumber;
+    previewWindow.setAttribute('id', 'previewToDoWindow')
+
+    const title = document.createElement('div');
+    title.setAttribute('id', 'previewToDoTitle');
+    title.textContent = theToDos[toDoNumber].title;
+    previewWindow.appendChild(title);
+
+    const description = document.createElement('div');
+    description.setAttribute('id', 'previewToDoDescription');
+    description.textContent = theToDos[toDoNumber].description;
+    previewWindow.appendChild(description);
+
+    const priority = document.createElement('div');
+    priority.setAttribute('id', 'previewToDoPriority');
+    priority.textContent = theToDos[toDoNumber].priority;
+    previewWindow.appendChild(priority);
+
+    const closeButton = document.createElement('div');
+    closeButton.setAttribute('id', 'closePreviewToDo');
+    closeButton.textContent = 'Close'
+    closeButton.onclick = function () {
+        previewWindow.remove(previewWindow);
+    }
+    previewWindow.appendChild(closeButton);
+
+    mainWindow.appendChild(previewWindow)
+}
 
 
 
