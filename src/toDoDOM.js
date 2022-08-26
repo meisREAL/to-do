@@ -109,6 +109,11 @@ const popUpWindow = function () {//pop up window to list info for to do (to crea
     createBtn.textContent = 'Create new';
 
     createBtn.onclick = function () {
+        if (title.value.length <= 0) {
+            window.confirm('To do?');
+            return;
+        }
+        console.log(title.value);
         let taskPriority;
         if (lowRadio.checked) {
             taskPriority = 'Low';
